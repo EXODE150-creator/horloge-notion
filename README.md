@@ -74,5 +74,5 @@ Cliquer à nouveau sur **✕** pour le masquer.
 
 ## 👤 Auteur
 
-**exode150** — Projet personnel dans le cadre de l'écosystème **EXODE**
+**EXODE150** — Projet personnel dans le cadre de l'écosystème **EXODE**
 
