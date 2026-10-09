@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>La Table Commune — Dossier de présentation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lexend:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="commun.css">
+<style>
+@page { size: A4; margin: 16mm 18mm 18mm 18mm; }
+
+/* ---------- Structure ---------- */
+.section { break-before: page; }
+.section.flow { break-before: auto; margin-top: 12mm; }
+.sec-head { display: grid; gap: 2.5mm; margin-bottom: 7mm; break-after: avoid; }
+.sec-num {
+  font-family: var(--f-mono); font-size: 8pt; letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+}
+h2 {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: 22pt; line-height: 1.08; color: var(--ink);
+}
+.sec-lead { font-size: 11pt; line-height: 1.5; color: var(--ink-2); font-weight: 300; max-width: 150mm; }
+h3 {
+  font-size: 11.5pt; font-weight: 600; line-height: 1.3; color: var(--ink);
+  margin: 6mm 0 2mm; break-after: avoid;
+}
+h3:first-child { margin-top: 0; }
+p + p { margin-top: 2.6mm; }
+.prose p { max-width: 160mm; color: var(--ink-2); }
+ul.clean, ol.clean { margin: 2mm 0 0; padding-left: 5mm; color: var(--ink-2); }
+ul.clean li + li, ol.clean li + li { margin-top: 1.4mm; }
+.muted { color: var(--muted); }
+.small { font-size: 8.4pt; }
+.note { font-size: 8.2pt; color: var(--muted); margin-top: 4mm; line-height: 1.5; }
+
+/* ---------- Sommaire ---------- */
+.toc { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.toc li {
+  display: grid; grid-template-columns: 12mm 1fr auto; align-items: baseline; gap: 4mm;
+  padding: 2.3mm 0; border-bottom: 1px solid var(--line);
+}
+.toc .n { font-family: var(--f-mono); color: var(--muted); font-size: 9pt; }
+.toc .t { font-size: 11pt; }
+.toc .t small { display: block; font-size: 8.4pt; color: var(--muted); margin-top: .6mm; }
+.toc .pg { font-family: var(--f-mono); font-size: 10pt; color: var(--brand); }
+.toc li.annex .t { color: var(--ink-2); }
+
+/* ---------- Synthèse ---------- */
+.idea {
+  background: var(--hero-bg); color: var(--hero-ink);
+  border-radius: 3mm; padding: 7mm 8mm; display: grid; gap: 3mm;
+}
+.idea .k { font-family: var(--f-mono); font-size: 7.5pt; letter-spacing: .16em; text-transform: uppercase; color: var(--hero-ink-2); }
+.idea p { font-size: 12.5pt; line-height: 1.45; font-weight: 300; }
+.idea p strong { color: var(--wheat); font-weight: 600; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 6mm; border-block: 1px solid var(--line); }
+.kpi { padding: 4mm 4mm 4mm 0; display: grid; gap: 1mm; align-content: start; }
+.kpi + .kpi { border-left: 1px solid var(--line); padding-left: 4mm; }
+.kpi .v { font-family: var(--f-display); font-size: 19pt; line-height: 1; color: var(--brand); }
+.kpi .l { font-size: 8.4pt; color: var(--ink-2); line-height: 1.35; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 6mm; }
+.box { background: var(--tint); border-radius: 2.5mm; padding: 5mm 6mm; break-inside: avoid; }
+.box h3 { margin-top: 0; }
+.ask { margin-top: 6mm; border: 1.5px solid var(--brand); border-radius: 2.5mm; padding: 5mm 6mm; break-inside: avoid; }
+.ask h3 { margin-top: 0; color: var(--brand); }
+
+/* ---------- Tableaux ---------- */
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th, td { text-align: left; vertical-align: top; padding: 2.4mm 2.2mm; border-bottom: 1px solid var(--line); }
+thead th {
+  font-family: var(--f-mono); font-weight: 500; font-size: 7.2pt; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); border-bottom: 1.5px solid var(--ink);
+}
+td { color: var(--ink-2); font-size: 8.8pt; line-height: 1.45; }
+td.what { color: var(--ink); font-weight: 600; }
+td.num, th.num { text-align: right; white-space: nowrap; font-family: var(--f-mono); }
+tfoot td { font-weight: 600; color: var(--ink); border-bottom: 0; border-top: 1.5px solid var(--ink); }
+.tbl-wrap { margin-top: 3mm; }
+
+/* ---------- Étapes ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 2mm; }
+.step { display: grid; gap: 2mm; align-content: start; break-inside: avoid; }
+.step .n { font-family: var(--f-display); font-size: 26pt; line-height: 1; color: var(--brand); }
+.step h4 { font-size: 10.5pt; font-weight: 600; }
+.step p { color: var(--ink-2); font-size: 9pt; }
+.rule {
+  margin-top: 7mm; background: var(--hero-bg); color: var(--hero-ink); border-radius: 2.5mm; padding: 5mm 6mm;
+  display: grid; grid-template-columns: 34mm 1fr; gap: 6mm; align-items: start; break-inside: avoid;
+}
+.rule .k { font-family: var(--f-display); font-size: 14pt; line-height: 1.1; color: var(--wheat); }
+.rule p { color: var(--hero-ink); font-size: 9.4pt; }
+.rule p + p { color: var(--hero-ink-2); }
+
+/* ---------- Carte des hectares ---------- */
+.map { margin-top: 4mm; border: 1px solid var(--line); border-radius: 2.5mm; padding: 5mm; break-inside: avoid; }
+.map svg { display: block; width: 100%; height: auto; }
+.c-prairie { fill: var(--c-prairie); } .c-cereale { fill: var(--c-cereale); }
+.c-legume { fill: var(--c-legume); } .c-etang { fill: var(--c-etang); } .c-reste { fill: var(--c-reste); }
+.ha-note { font-family: var(--f-mono); font-size: 15px; fill: var(--ink); }
+.ha-bracket { stroke: var(--ink); stroke-width: 1.5; fill: none; }
+.sw { display: inline-block; width: 3mm; height: 3mm; border-radius: .6mm; vertical-align: -.4mm; margin-right: 2mm; }
+.sw.c-prairie { background: var(--c-prairie); } .sw.c-cereale { background: var(--c-cereale); }
+.sw.c-legume { background: var(--c-legume); } .sw.c-etang { background: var(--c-etang); }
+.sw.c-reste { background: var(--c-reste); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* ---------- Travail ---------- */
+.bars { display: grid; gap: 2mm; margin-top: 3mm; }
+.bar { display: grid; grid-template-columns: 62mm 1fr 14mm; gap: 3mm; align-items: center; font-size: 8.8pt; }
+.bar .track { height: 4mm; background: var(--tint); border-radius: 1mm; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--brand); border-radius: 0 1mm 1mm 0; }
+.bar .fill.sal { background: var(--wheat); }
+.bar .v { font-family: var(--f-mono); text-align: right; color: var(--ink); }
+.bar .lbl { color: var(--ink-2); }
+
+/* ---------- Calendrier ---------- */
+.gantt { width: 100%; border-collapse: collapse; margin-top: 3mm; }
+.gantt th, .gantt td { border-bottom: 1px solid var(--line); padding: 2mm 1.5mm; }
+.gantt thead th { text-align: center; }
+.gantt thead th:first-child { text-align: left; }
+.gantt td.task { width: 62mm; color: var(--ink); font-size: 8.6pt; }
+.gantt td.task small { display: block; color: var(--muted); font-size: 7.6pt; }
+.gantt td.cell { position: relative; padding: 0; height: 9mm; border-left: 1px dashed var(--line); }
+.gantt .b { position: absolute; top: 2.6mm; height: 3.8mm; border-radius: 1mm; background: var(--brand); }
+.gantt .b.p0 { background: var(--muted); }
+.gantt .b.p1 { background: var(--brand); }
+.gantt .b.p2 { background: var(--c-cereale); }
+.gantt .b.p3 { background: var(--c-etang); }
+.gantt .b.p4 { background: var(--c-legume); }
+.phase-list { display: grid; gap: 4mm; margin-top: 6mm; }
+.phase { display: grid; grid-template-columns: 36mm 1fr; gap: 6mm; break-inside: avoid; padding-top: 3mm; border-top: 1px solid var(--line); }
+.phase .when { font-family: var(--f-mono); font-size: 8.4pt; color: var(--accent); }
+.phase .when b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 12pt; color: var(--ink); margin-top: 1mm; }
+.phase ul { margin: 0; padding-left: 4.5mm; color: var(--ink-2); }
+.phase li + li { margin-top: 1mm; }
+
+/* ---------- Divers ---------- */
+.cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; margin-top: 3mm; }
+.card { display: grid; gap: 1.6mm; align-content: start; break-inside: avoid; padding-top: 3mm; border-top: 2px solid var(--brand); }
+.card .where { font-family: var(--f-mono); font-size: 7.4pt; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.card h4 { font-size: 11pt; font-weight: 600; }
+.card p { color: var(--ink-2); font-size: 8.9pt; }
+.asks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.asks li { display: grid; grid-template-columns: 12mm 1fr; gap: 4mm; padding: 3.6mm 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+.asks .n { font-family: var(--f-display); font-size: 17pt; line-height: 1; color: var(--brand); }
+.asks strong { display: block; font-size: 10.5pt; color: var(--ink); }
+.asks p { color: var(--ink-2); }
+.sign { margin-top: 10mm; display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; break-inside: avoid; }
+.sign .s { display: grid; gap: 2mm; }
+.sign .line { border-bottom: 1px solid var(--ink-2); height: 12mm; }
+.sign .lbl { font-size: 8.4pt; color: var(--muted); }
+.fill-table td { height: 10mm; }
+.glossary { display: grid; grid-template-columns: 22mm 1fr; gap: 1.8mm 5mm; margin-top: 3mm; }
+.glossary dt { font-family: var(--f-mono); font-weight: 500; color: var(--brand); }
+.glossary dd { margin: 0; color: var(--ink-2); }
+.closing { margin-top: 8mm; font-size: 11pt; font-weight: 300; line-height: 1.5; max-width: 150mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ Sommaire ============ -->
+<section class="toc-page">
+  <div class="sec-head">
+    <span class="sec-num">Sommaire</span>
+    <h2>Le projet de A à Z</h2>
+    <p class="sec-lead">Ce dossier présente La Table Commune : l'idée, ce qu'elle demande en terres, en travail et en argent, le cadre juridique, le calendrier, et ce que nous proposons de décider ensemble.</p>
+  </div>
+  <ol class="toc">
+    <li><span class="n">01</span><span class="t">Le projet en une page<small>L'essentiel pour décider</small></span><span class="pg">__P_s1__</span></li>
+    <li><span class="n">02</span><span class="t">Pourquoi ce projet</span><span class="pg">__P_s2__</span></li>
+    <li><span class="n">03</span><span class="t">Saint-Jean-d'Heurs aujourd'hui</span><span class="pg">__P_s3__</span></li>
+    <li><span class="n">04</span><span class="t">Comment ça marche</span><span class="pg">__P_s4__</span></li>
+    <li><span class="n">05</span><span class="t">Les six productions</span><span class="pg">__P_s5__</span></li>
+    <li><span class="n">06</span><span class="t">Les terres nécessaires</span><span class="pg">__P_s6__</span></li>
+    <li><span class="n">07</span><span class="t">Le travail nécessaire</span><span class="pg">__P_s7__</span></li>
+    <li><span class="n">08</span><span class="t">Quelle organisation juridique&nbsp;?</span><span class="pg">__P_s8__</span></li>
+    <li><span class="n">09</span><span class="t">Les règles à respecter</span><span class="pg">__P_s9__</span></li>
+    <li><span class="n">10</span><span class="t">Budget et financement</span><span class="pg">__P_s10__</span></li>
+    <li><span class="n">11</span><span class="t">Le calendrier</span><span class="pg">__P_s11__</span></li>
+    <li><span class="n">12</span><span class="t">Gouvernance et participation des habitants</span><span class="pg">__P_s12__</span></li>
+    <li><span class="n">13</span><span class="t">Risques et réponses</span><span class="pg">__P_s13__</span></li>
+    <li><span class="n">14</span><span class="t">Ils l'ont déjà fait</span><span class="pg">__P_s14__</span></li>
+    <li><span class="n">15</span><span class="t">Ce que nous demandons au maire</span><span class="pg">__P_s15__</span></li>
+    <li class="annex"><span class="n">A</span><span class="t">Annexe&nbsp;: hypothèses de calcul</span><span class="pg">__P_aA__</span></li>
+    <li class="annex"><span class="n">B</span><span class="t">Annexe&nbsp;: fiche d'inventaire des parcelles communales</span><span class="pg">__P_aB__</span></li>
+    <li class="annex"><span class="n">C</span><span class="t">Annexe&nbsp;: sigles utilisés</span><span class="pg">__P_aC__</span></li>
+  </ol>
+</section>
+
+<!-- ============ 1. Synthèse ============ -->
+<section class="section" id="s1">
+  <div class="sec-head">
+    <span class="sec-num">01 · Le projet en une page</span>
+    <h2>Le projet en une page</h2>
+  </div>
+  <div class="idea">
+    <span class="k">L'idée</span>
+    <p>Cultiver et élever sur les terres de Saint-Jean-d'Heurs nos légumes, nos céréales et notre pain, nos œufs et volailles, nos porcs, nos bœufs et nos poissons. Le travail est organisé par quelques professionnels salariés et partagé par les habitants. La récolte est distribuée <strong>gratuitement à tous les foyers</strong>, chaque semaine.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><span class="v">703</span><span class="l">habitants à nourrir, soit environ 300&nbsp;foyers</span></div>
+    <div class="kpi"><span class="v">≈&nbsp;100&nbsp;ha</span><span class="l">de terres pour le projet complet, soit 9&nbsp;% de la commune</span></div>
+    <div class="kpi"><span class="v">≈&nbsp;12</span><span class="l">temps pleins de travail, dont 3 salariés et le reste donné par les habitants</span></div>
+    <div class="kpi"><span class="v">4</span><span class="l">phases sur 5 ans, dans le mandat municipal en cours</span></div>
+  </div>
+  <div class="two">
+    <div class="box">
+      <h3>Ce que le projet demande à la commune</h3>
+      <ul class="clean">
+        <li>Mettre à disposition ses parcelles et un local de distribution.</li>
+        <li>Soutenir la création de la structure qui porte le projet.</li>
+        <li>Cofinancer le poste du maraîcher et les premiers investissements (41&nbsp;000 à 91&nbsp;000&nbsp;€ pour la phase 1).</li>
+        <li>Porter les demandes de subventions réservées aux communes.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Ce que le projet apporte au village</h3>
+      <ul class="clean">
+        <li>Une nourriture fraîche, locale et gratuite pour chaque foyer.</li>
+        <li>Quand le potager sera complet&nbsp;: environ 230&nbsp;kg de légumes par foyer et par an, soit 600 à 700&nbsp;€ d'achats en moins.</li>
+        <li>Du lien entre les générations et entre anciens et nouveaux habitants.</li>
+        <li>Un village plus solide face aux hausses de prix et aux crises.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ask">
+    <h3>Ce que nous vous demandons aujourd'hui</h3>
+    <ol class="clean">
+      <li>Nous communiquer la liste des parcelles communales et les visiter ensemble.</li>
+      <li>Présenter le projet en conseil municipal pour une délibération de principe et la création d'un groupe de travail.</li>
+      <li>Organiser avec nous une réunion publique pour présenter le projet aux habitants.</li>
+      <li>Solliciter l'accompagnement de la Chambre d'agriculture et de la communauté de communes.</li>
+      <li>Identifier un local communal pour la distribution des paniers.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 2. Pourquoi ============ -->
+<section class="section" id="s2">
+  <div class="sec-head">
+    <span class="sec-num">02 · Pourquoi ce projet</span>
+    <h2>Pourquoi ce projet</h2>
+    <p class="sec-lead">Se nourrir est le premier besoin de chaque foyer. Une commune rurale a des terres, des savoir-faire et des habitants prêts à s'engager. La Table Commune les réunit.</p>
+  </div>
+  <div class="prose">
+    <h3>Se nourrir coûte de plus en plus cher</h3>
+    <p>Les prix de l'alimentation ont augmenté d'environ 20&nbsp;% en France entre 2021 et 2023. Pour beaucoup de foyers, les courses sont devenues le premier poste où l'on se prive. Un panier gratuit chaque semaine, c'est du pouvoir d'achat rendu directement aux familles, aux retraités et aux jeunes du village.</p>
+
+    <h3>Manger mieux</h3>
+    <p>Des légumes cueillis la veille, du pain fait avec le blé du village, des animaux élevés en plein air à quelques centaines de mètres de chez soi. On sait d'où vient ce qu'on mange et comment c'est produit.</p>
+
+    <h3>Créer du lien</h3>
+    <p>Travailler ensemble au potager, au poulailler ou au fournil, c'est rencontrer ses voisins. Les anciens transmettent leurs savoir-faire, les enfants apprennent d'où vient la nourriture, les nouveaux habitants trouvent leur place.</p>
+
+    <h3>Rendre le village plus solide</h3>
+    <p>Sécheresses, crises sanitaires, hausse du prix des carburants&nbsp;: un village qui produit une partie de sa nourriture dépend moins des chaînes d'approvisionnement lointaines.</p>
+
+    <h3>Garder des terres vivantes et installer des jeunes</h3>
+    <p>Le projet crée des emplois agricoles sur la commune (maraîcher, éleveur, boulanger) et entretient des terres. Il peut aider à l'installation de jeunes agriculteurs, en lien avec ceux qui sont déjà là.</p>
+
+    <h3>Préparer l'avenir de la restauration collective</h3>
+    <p>La loi EGalim impose à la restauration collective publique au moins 50&nbsp;% de produits durables et de qualité, dont 20&nbsp;% de bio. Si la commune a une cantine ou en partage une, la production locale peut aider à respecter cette obligation.</p>
+  </div>
+</section>
+
+<!-- ============ 3. La commune ============ -->
+<section class="section" id="s3">
+  <div class="sec-head">
+    <span class="sec-num">03 · Saint-Jean-d'Heurs aujourd'hui</span>
+    <h2>Saint-Jean-d'Heurs aujourd'hui</h2>
+  </div>
+  <table>
+    <thead><tr><th>Donnée</th><th>Valeur</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td class="what">Population municipale</td><td class="mono">703 habitants</td><td>INSEE, dernier recensement</td></tr>
+      <tr><td class="what">Superficie</td><td class="mono">11,13 km² (1&nbsp;113 ha)</td><td>INSEE</td></tr>
+      <tr><td class="what">Altitude</td><td class="mono">333 à 423 m</td><td>IGN</td></tr>
+      <tr><td class="what">Département</td><td>Puy-de-Dôme, secteur de Lezoux (63190)</td><td></td></tr>
+      <tr><td class="what">Nombre de foyers</td><td class="mono">≈ 300</td><td>Estimation (2,3 personnes par foyer)</td></tr>
+    </tbody>
+  </table>
+  <h3>À compléter avec la mairie</h3>
+  <p class="muted">Ces informations décideront de la taille de la première phase. L'annexe B propose une fiche pour les recenser.</p>
+  <ul class="clean">
+    <li>Les parcelles appartenant à la commune&nbsp;: surface, nature (prairie, terre labourable, bois, friche), accès, usage actuel, bail en cours éventuel.</li>
+    <li>Les points d'eau&nbsp;: sources, ruisseaux, étangs, forage, réseau.</li>
+    <li>Les bâtiments communaux libres pouvant servir de local de distribution, de stockage ou de fournil.</li>
+    <li>Les exploitations agricoles de la commune et leurs projets (départ en retraite, recherche de repreneur, terres à louer).</li>
+    <li>La situation de la restauration scolaire (cantine sur place ou partagée).</li>
+  </ul>
+</section>
+
+<!-- ============ 4. Comment ça marche ============ -->
+<section class="section" id="s4">
+  <div class="sec-head">
+    <span class="sec-num">04 · Comment ça marche</span>
+    <h2>Comment ça marche</h2>
+    <p class="sec-lead">Trois étapes, de la terre à la table.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <span class="n">1</span>
+      <h4>La commune met ses terres à disposition</h4>
+      <p>On commence avec les parcelles communales. Ensuite, on loue ou on partage des terres avec les agriculteurs du village, et on peut en acquérir progressivement.</p>
+    </div>
+    <div class="step">
+      <span class="n">2</span>
+      <h4>Les habitants cultivent ensemble</h4>
+      <p>Des professionnels salariés (un maraîcher d'abord, puis un éleveur et un boulanger) organisent le travail. Les habitants donnent quelques heures par mois, selon leurs possibilités, sur des créneaux courts et encadrés.</p>
+    </div>
+    <div class="step">
+      <span class="n">3</span>
+      <h4>La récolte est partagée gratuitement</h4>
+      <p>Chaque semaine, chaque foyer inscrit vient chercher son panier au local commun. Sa composition dépend de la saison et de la taille du foyer. Les personnes qui ne peuvent pas se déplacer sont livrées par des bénévoles.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <span class="k">La règle d'or</span>
+    <div>
+      <p><strong>Le panier n'est jamais la contrepartie du travail.</strong> Tout habitant reçoit son panier, qu'il participe ou non.</p>
+      <p>C'est une question de solidarité&nbsp;: personnes âgées, malades, parents débordés ont leur place. C'est aussi une protection juridique&nbsp;: un panier donné en échange d'heures de travail pourrait être considéré comme une rémunération en nature, donc comme un emploi non déclaré.</p>
+    </div>
+  </div>
+
+  <h3>La distribution</h3>
+  <ul class="clean">
+    <li>Un jour fixe par semaine, au local commun, avec une chambre froide.</li>
+    <li>Inscription des foyers une fois par an (nombre de personnes, besoins particuliers).</li>
+    <li>Un registre simple de ce qui est produit et distribué, pour la traçabilité sanitaire et le bilan annuel.</li>
+    <li>Les surplus de saison sont transformés (conserves, soupes, confitures) ou vendus pour financer le fonctionnement.</li>
+  </ul>
+
+  <h3>La participation</h3>
+  <ul class="clean">
+    <li>Des créneaux de 2 à 4 heures (samedi matin, soirées d'été), affichés au local et en ligne.</li>
+    <li>Des tâches pour tous les âges et toutes les forces&nbsp;: semis, désherbage, récolte, soins aux poules, pétrissage, distribution, livraison, comptabilité.</li>
+    <li>Une formation assurée par les professionnels salariés.</li>
+  </ul>
+</section>
+
+<!-- ============ 5. Productions ============ -->
+<section class="section" id="s5">
+  <div class="sec-head">
+    <span class="sec-num">05 · Les six productions</span>
+    <h2>Les six productions</h2>
+    <p class="sec-lead">Pour chaque production&nbsp;: ce qu'il faut pour nourrir tout le village, la première étape réaliste, et les règles principales.</p>
+  </div>
+  <table>
+    <thead>
+      <tr><th style="width:21%">Production</th><th style="width:20%">Besoin du village par an</th><th style="width:20%">Moyens</th><th style="width:19%">Première étape</th><th style="width:20%">Règles principales</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="what">Légumes<br><span class="muted small">pommes de terre, carottes, choux, tomates, salades, courges…</span></td>
+        <td class="mono">≈ 70 t</td>
+        <td>6 ha de potager, dont une serre</td>
+        <td>1 ha et une serre (année 1)</td>
+        <td>Hygiène et traçabilité à la distribution</td>
+      </tr>
+      <tr>
+        <td class="what">Céréales et pain</td>
+        <td class="mono">≈ 30 t de blé pour le pain<br>≈ 84 t de céréales pour les animaux</td>
+        <td>9 ha de blé + 21 ha de céréales fourragères</td>
+        <td>Moisson avec une CUMA ou un agriculteur partenaire, mouture à façon, four communal</td>
+        <td>Hygiène du fournil, déclaration à la DDPP</td>
+      </tr>
+      <tr>
+        <td class="what">Œufs et volailles</td>
+        <td class="mono">≈ 140&nbsp;000 œufs<br>≈ 3&nbsp;900 poulets</td>
+        <td>≈ 560 poules pondeuses, poulets en plein air</td>
+        <td>Un poulailler mobile de 100 poules</td>
+        <td>Déclaration de l'élevage, mesures contre la grippe aviaire, abattage agréé</td>
+      </tr>
+      <tr>
+        <td class="what">Porcs</td>
+        <td class="mono">≈ 95 porcs</td>
+        <td>Élevage en plein air, nourri aux céréales et aux légumes déclassés</td>
+        <td>Une dizaine de porcs</td>
+        <td>Identification, registre d'élevage, abattoir agréé. Restes de repas interdits</td>
+      </tr>
+      <tr>
+        <td class="what">Bœufs</td>
+        <td class="mono">≈ 20 bêtes</td>
+        <td>≈ 25 vaches et leur suite sur 55 ha de prairies</td>
+        <td>Un partenariat avec un éleveur du village</td>
+        <td>Identification (EDE), abattoir et atelier de découpe agréés</td>
+      </tr>
+      <tr>
+        <td class="what">Poissons</td>
+        <td class="mono">≈ 1,4 t</td>
+        <td>≈ 4 ha d'étangs (carpes, tanches, truites selon l'eau)</td>
+        <td>Étudier les points d'eau de la commune</td>
+        <td>Déclaration ou autorisation au titre de la loi sur l'eau (DDT)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">Ordres de grandeur pour 703 habitants, avec un peu moins de viande que la moyenne française. Le détail des hypothèses est en annexe A. Le lait, les fruits, l'huile et le sucre ne sont pas comptés&nbsp;: ils pourront venir dans une phase ultérieure (vergers, ruches, lait).</p>
+
+  <h3>Pourquoi commencer par les légumes et les œufs</h3>
+  <p class="prose" style="color:var(--ink-2)">Ce sont les productions qui demandent le moins de terre, le moins d'investissement et le moins de démarches. Elles donnent des résultats visibles dès la première saison&nbsp;: les habitants voient arriver les paniers, ce qui crée la confiance nécessaire pour passer aux étapes suivantes.</p>
+</section>
+
+<!-- ============ 6. Terres ============ -->
+<section class="section" id="s6">
+  <div class="sec-head">
+    <span class="sec-num">06 · Les terres nécessaires</span>
+    <h2>Moins d'un dixième de la commune</h2>
+    <p class="sec-lead">Chaque carré représente un hectare de Saint-Jean-d'Heurs. Les carrés en couleur montrent la surface nécessaire au projet complet.</p>
+  </div>
+  <div class="map">
+    <svg id="ha-grid" viewBox="0 0 636 284" role="img" aria-label="Grille de 1 113 hectares"></svg>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Usage</th><th class="num">Surface</th><th class="num">Part de la commune</th></tr></thead>
+      <tbody>
+        <tr><td><span class="sw c-prairie"></span>Prairies et parcours (bœufs, porcs, volailles)</td><td class="num">59 ha</td><td class="num">5,3 %</td></tr>
+        <tr><td><span class="sw c-cereale"></span>Céréales (pain et nourriture des animaux)</td><td class="num">30 ha</td><td class="num">2,7 %</td></tr>
+        <tr><td><span class="sw c-legume"></span>Légumes</td><td class="num">6 ha</td><td class="num">0,5 %</td></tr>
+        <tr><td><span class="sw c-etang"></span>Étangs</td><td class="num">4 ha</td><td class="num">0,4 %</td></tr>
+        <tr><td><span class="sw c-reste"></span>Reste de la commune, inchangé</td><td class="num">1&nbsp;014 ha</td><td class="num">91,1 %</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total</td><td class="num">1&nbsp;113 ha</td><td class="num">100 %</td></tr></tfoot>
+    </table>
+  </div>
+  <h3>Comment accéder à ces terres</h3>
+  <ul class="clean">
+    <li><strong>Les parcelles communales</strong>&nbsp;: mises à disposition par convention ou par bail, après délibération du conseil municipal. Elles suffisent probablement pour la phase 1 (1 à 2 ha).</li>
+    <li><strong>La location</strong>&nbsp;: des terres louées à des propriétaires du village, au prix du fermage local.</li>
+    <li><strong>Le partenariat avec les agriculteurs</strong>&nbsp;: un éleveur qui conduit le troupeau, un céréalier qui assure la moisson, avec une rémunération convenue. Les agriculteurs restent maîtres de leurs terres.</li>
+    <li><strong>L'acquisition progressive</strong>&nbsp;: lors de départs en retraite, avec l'aide éventuelle de la SAFER ou de Terre de Liens, une association qui aide les collectifs à acquérir des terres agricoles.</li>
+  </ul>
+</section>
+
+<!-- ============ 7. Travail ============ -->
+<section class="section" id="s7">
+  <div class="sec-head">
+    <span class="sec-num">07 · Le travail nécessaire</span>
+    <h2>Le travail nécessaire</h2>
+    <p class="sec-lead">Le projet complet demande environ 12 temps pleins. Trois sont salariés, le reste est donné par les habitants.</p>
+  </div>
+  <div class="bars" id="bars"></div>
+  <p class="note">En temps pleins. Les trois salariés (maraîcher, éleveur, boulanger) organisent ces activités&nbsp;; le reste du temps est donné par les habitants. Un temps plein = 151,67 heures par mois. Estimations à affiner avec la Chambre d'agriculture.</p>
+
+  <div class="two">
+    <div class="box">
+      <h3>Phase 1&nbsp;: le potager et le poulailler</h3>
+      <p style="color:var(--ink-2)">1 ha de légumes et 100 poules demandent environ 1,3 temps plein. Le maraîcher salarié en assure 1. Il reste environ <strong>45 heures par mois</strong> pour les habitants, soit par exemple <strong>12 personnes à 4 heures par mois</strong>.</p>
+    </div>
+    <div class="box">
+      <h3>Projet complet (année 5)</h3>
+      <p style="color:var(--ink-2)">12 temps pleins dont 3 salariés (maraîcher, éleveur, boulanger). Il reste environ <strong>1&nbsp;370 heures par mois</strong>, soit <strong>340 habitants à 4 heures</strong> ou <strong>230 habitants à 6 heures</strong> par mois, sur environ 550 adultes.</p>
+    </div>
+  </div>
+  <p class="note">Le temps donné par les habitants a une vraie valeur&nbsp;: 1&nbsp;370 heures par mois représentent environ 16&nbsp;400 heures par an, soit près de 250&nbsp;000&nbsp;€ de travail si on le payait 15&nbsp;€ de l'heure, charges comprises.</p>
+</section>
+
+<!-- ============ 8. Juridique ============ -->
+<section class="section" id="s8">
+  <div class="sec-head">
+    <span class="sec-num">08 · Quelle organisation juridique&nbsp;?</span>
+    <h2>Quelle organisation juridique&nbsp;?</h2>
+    <p class="sec-lead">Plusieurs formes sont possibles. Nous proposons de commencer simple et de faire évoluer la structure avec le projet.</p>
+  </div>
+  <table>
+    <thead><tr><th style="width:18%">Forme</th><th style="width:30%">Comment ça marche</th><th style="width:26%">Avantages</th><th style="width:26%">Points d'attention</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="what">Régie agricole municipale</td>
+        <td>La commune emploie les salariés et possède la production (modèle de Mouans-Sartoux).</td>
+        <td>Maîtrise publique complète.</td>
+        <td>Lourd pour une commune de 700 habitants. La distribution gratuite à tous doit être sécurisée juridiquement.</td>
+      </tr>
+      <tr>
+        <td class="what">Association loi 1901</td>
+        <td>Une association d'habitants porte le projet. Une convention avec la commune fixe la mise à disposition des terres, du local et une subvention.</td>
+        <td>Simple et rapide à créer. Accueille naturellement le bénévolat. Éligible à de nombreuses aides.</td>
+        <td>Assurance des bénévoles. Responsabilités d'employeur. Règles fiscales si elle vend des surplus.</td>
+      </tr>
+      <tr>
+        <td class="what">SCIC (coopérative)</td>
+        <td>Une coopérative qui associe salariés, habitants, agriculteurs et la commune. Les collectivités peuvent détenir jusqu'à 50&nbsp;% du capital.</td>
+        <td>Gouvernance partagée et durable. Adaptée à un projet qui grandit.</td>
+        <td>Plus longue à monter. Demande un accompagnement.</td>
+      </tr>
+      <tr>
+        <td class="what">CCAS</td>
+        <td>Le centre communal d'action sociale distribue l'aide alimentaire.</td>
+        <td>Outil existant.</td>
+        <td>Réservé à l'aide sociale. Ne convient pas à une distribution à tous les foyers.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="rule" style="margin-top:7mm">
+    <span class="k">Notre proposition</span>
+    <div>
+      <p>Créer dès la phase 0 une association «&nbsp;La Table Commune&nbsp;», liée à la commune par une convention&nbsp;: parcelles, local, subvention pour le poste du maraîcher.</p>
+      <p>Étudier en années 2 et 3 le passage en SCIC, avec la commune comme associée. Faire valider le montage par un juriste ou par les services de la préfecture avant la délibération.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. Règles ============ -->
+<section class="section flow" id="s9">
+  <div class="sec-head">
+    <span class="sec-num">09 · Les règles à respecter</span>
+    <h2>Les règles à respecter</h2>
+    <p class="sec-lead">Le projet respecte la réglementation dès le départ. Voici les principales démarches et les services à contacter.</p>
+  </div>
+  <table>
+    <thead><tr><th style="width:22%">Domaine</th><th style="width:52%">Ce qu'il faut faire</th><th style="width:26%">Interlocuteur</th></tr></thead>
+    <tbody>
+      <tr><td class="what">Terres communales</td><td>Délibération du conseil municipal, puis convention ou bail.</td><td>Conseil municipal</td></tr>
+      <tr><td class="what">Bâtiments</td><td>Vérifier le document d'urbanisme (PLU ou carte communale) pour la serre, le poulailler, le local et le fournil. Déclaration préalable ou permis selon la taille.</td><td>Mairie, DDT</td></tr>
+      <tr><td class="what">Animaux</td><td>Identification des bovins et des porcs, registre d'élevage, déclaration des volailles.</td><td>EDE, DDPP</td></tr>
+      <tr><td class="what">Abattage et découpe</td><td>Obligatoirement en abattoir et atelier de découpe agréés pour les bovins et les porcs. Pour les volailles, établissement agréé ou dérogation encadrée.</td><td>DDPP, abattoir le plus proche</td></tr>
+      <tr><td class="what">Distribution de denrées</td><td>Règles d'hygiène, chaîne du froid, traçabilité. Déclaration des activités de transformation (pain, conserves).</td><td>DDPP</td></tr>
+      <tr><td class="what">Étangs</td><td>Déclaration ou autorisation au titre de la loi sur l'eau selon la taille et le mode d'alimentation en eau.</td><td>DDT (police de l'eau)</td></tr>
+      <tr><td class="what">Santé des animaux</td><td>Mesures de biosécurité, notamment contre la grippe aviaire. Suivi par un vétérinaire.</td><td>DDPP, vétérinaire</td></tr>
+      <tr><td class="what">Bénévoles</td><td>Assurance responsabilité civile de l'association. Panier jamais lié au travail fourni.</td><td>Assureur</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 10. Budget ============ -->
+<section class="section" id="s10">
+  <div class="sec-head">
+    <span class="sec-num">10 · Budget et financement</span>
+    <h2>Budget et financement</h2>
+    <p class="sec-lead">Les montants sont des fourchettes à confirmer par des devis. Ils servent à mesurer l'ordre de grandeur de l'effort demandé.</p>
+  </div>
+
+  <h3>Phase 1&nbsp;: investissements</h3>
+  <table>
+    <thead><tr><th>Poste</th><th class="num">Fourchette</th></tr></thead>
+    <tbody>
+      <tr><td>Serre tunnel d'environ 400&nbsp;m²</td><td class="num">8 000 – 15 000 €</td></tr>
+      <tr><td>Irrigation (raccordement, goutte-à-goutte, cuve)</td><td class="num">5 000 – 15 000 €</td></tr>
+      <tr><td>Outillage et motoculteur ou micro-tracteur</td><td class="num">10 000 – 25 000 €</td></tr>
+      <tr><td>Poulailler mobile pour 100 poules et clôtures</td><td class="num">5 000 – 10 000 €</td></tr>
+      <tr><td>Aménagement du local de distribution et chambre froide</td><td class="num">10 000 – 20 000 €</td></tr>
+      <tr><td>Semences, plants et premières poules</td><td class="num">3 000 – 6 000 €</td></tr>
+    </tbody>
+    <tfoot><tr><td>Total phase 1</td><td class="num">41 000 – 91 000 €</td></tr></tfoot>
+  </table>
+
+  <h3>Phase 1&nbsp;: fonctionnement par an</h3>
+  <table>
+    <thead><tr><th>Poste</th><th class="num">Fourchette</th></tr></thead>
+    <tbody>
+      <tr><td>Salaire du maraîcher à temps plein, charges comprises</td><td class="num">30 000 – 38 000 €</td></tr>
+      <tr><td>Semences, terreau, aliments des poules</td><td class="num">4 000 – 7 000 €</td></tr>
+      <tr><td>Eau, énergie, assurances, entretien</td><td class="num">3 000 – 6 000 €</td></tr>
+    </tbody>
+    <tfoot><tr><td>Total par an (soit 53 à 73 € par habitant)</td><td class="num">37 000 – 51 000 €</td></tr></tfoot>
+  </table>
+  <p class="note">En face, la phase 1 produit environ 12 tonnes de légumes et 25&nbsp;000 œufs par an, soit 40&nbsp;000 à 45&nbsp;000&nbsp;€ au prix de détail. Chaque euro dépensé revient aux habitants sous forme de nourriture.</p>
+
+  <h3>Projet complet (année 5)&nbsp;: fonctionnement par an</h3>
+  <table>
+    <thead><tr><th>Poste</th><th class="num">Fourchette</th></tr></thead>
+    <tbody>
+      <tr><td>Trois salariés (maraîcher, éleveur, boulanger)</td><td class="num">95 000 – 115 000 €</td></tr>
+      <tr><td>Semences, plants, intrants, soins vétérinaires</td><td class="num">25 000 – 35 000 €</td></tr>
+      <tr><td>Abattage et découpe en établissements agréés</td><td class="num">25 000 – 30 000 €</td></tr>
+      <tr><td>Mécanisation (CUMA, prestations de moisson)</td><td class="num">10 000 – 15 000 €</td></tr>
+      <tr><td>Énergie, eau, assurances, entretien</td><td class="num">15 000 – 20 000 €</td></tr>
+      <tr><td>Location de terres (fermage)</td><td class="num">10 000 – 15 000 €</td></tr>
+    </tbody>
+    <tfoot><tr><td>Total par an (soit 21 à 27 € par habitant et par mois)</td><td class="num">180 000 – 230 000 €</td></tr></tfoot>
+  </table>
+  <p class="note">Les investissements du projet complet (bâtiments d'élevage, fournil, aménagement d'étangs, matériel) sont estimés très grossièrement entre 250&nbsp;000 et 500&nbsp;000&nbsp;€ sur cinq ans, à étaler et à subventionner. Ils seront chiffrés par devis avant chaque phase.</p>
+
+  <h3>Qui paie&nbsp;?</h3>
+  <p class="prose" style="color:var(--ink-2)">Rien n'est gratuit à produire. Mais à la distribution, personne ne paie&nbsp;: le coût est porté par tout le village, à travers plusieurs leviers.</p>
+  <table class="tbl-wrap">
+    <thead><tr><th style="width:28%">Levier</th><th>Ce qu'il finance</th></tr></thead>
+    <tbody>
+      <tr><td class="what">Le temps des habitants</td><td>La plus grande part du travail. C'est lui qui rend la gratuité possible.</td></tr>
+      <tr><td class="what">La commune</td><td>Mise à disposition des terres et du local, participation aux salaires, part non subventionnée des investissements.</td></tr>
+      <tr><td class="what">Les subventions d'investissement</td><td>État (DETR, DSIL), Département du Puy-de-Dôme, Région Auvergne-Rhône-Alpes, fonds européens LEADER, programmes liés aux projets alimentaires territoriaux (PAT).</td></tr>
+      <tr><td class="what">Les fondations et le financement participatif</td><td>Équipements ponctuels (serre, four, poulailler).</td></tr>
+      <tr><td class="what">La vente des surplus</td><td>Une partie du fonctionnement, grâce à ce qui dépasse les besoins du village (marché, cantines voisines), dans le respect des règles fiscales.</td></tr>
+      <tr><td class="what">Une caisse commune volontaire</td><td>Ceux qui le souhaitent cotisent selon leurs moyens, sur le modèle de Montpellier. Le panier reste gratuit pour tous.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Pour la phase 1, la commune et les subventions suffisent. Pour le projet complet, la gratuité pour tous suppose de combiner ces leviers. L'étude de faisabilité de la phase 0 fixera la part de chacun avant tout engagement.</p>
+</section>
+
+<!-- ============ 11. Calendrier ============ -->
+<section class="section" id="s11">
+  <div class="sec-head">
+    <span class="sec-num">11 · Le calendrier</span>
+    <h2>On commence petit, on grandit chaque année</h2>
+    <p class="sec-lead">Le calendrier tient dans le mandat municipal en cours (2026–2032). Chaque phase est décidée au vu du bilan de la précédente.</p>
+  </div>
+  <table class="gantt">
+    <thead>
+      <tr><th>Étape</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="task">Phase 0 · Préparer<small>délibération, association, subventions</small></td>
+        <td class="cell"><span class="b p0" style="left:80%;right:-2px"></span></td><td class="cell"><span class="b p0" style="left:0;right:75%"></span></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td></tr>
+      <tr><td class="task">Phase 1 · Le potager et le poulailler<small>1 ha, serre, 100 poules</small></td>
+        <td class="cell"></td><td class="cell"><span class="b p1" style="left:25%;right:-2px"></span></td><td class="cell"><span class="b p1" style="left:0;right:0"></span></td><td class="cell"><span class="b p1" style="left:0;right:0;opacity:.35"></span></td><td class="cell"><span class="b p1" style="left:0;right:0;opacity:.35"></span></td><td class="cell"><span class="b p1" style="left:0;right:0;opacity:.35"></span></td></tr>
+      <tr><td class="task">Phase 2 · Le pain, les porcs, les poulets<small>céréales, fournil, potager à 6 ha</small></td>
+        <td class="cell"></td><td class="cell"></td><td class="cell"><span class="b p2" style="left:0;right:-2px"></span></td><td class="cell"><span class="b p2" style="left:0;right:0"></span></td><td class="cell"><span class="b p2" style="left:0;right:0;opacity:.35"></span></td><td class="cell"><span class="b p2" style="left:0;right:0;opacity:.35"></span></td></tr>
+      <tr><td class="task">Phase 3 · L'étang et le troupeau<small>pisciculture, bovins avec les éleveurs</small></td>
+        <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"><span class="b p3" style="left:0;right:-2px"></span></td><td class="cell"><span class="b p3" style="left:0;right:-2px"></span></td><td class="cell"><span class="b p3" style="left:0;right:0"></span></td></tr>
+      <tr><td class="task">Ensuite · Vergers, ruches, lait<small>selon les envies des habitants</small></td>
+        <td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"></td><td class="cell"><span class="b p4" style="left:30%;right:0"></span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Barre pleine&nbsp;: mise en place. Barre claire&nbsp;: la production continue.</p>
+
+  <div class="phase-list">
+    <div class="phase">
+      <span class="when">Nov. 2026 – mars 2027<b>Phase 0 · Préparer</b></span>
+      <ul>
+        <li>Présentation au maire, puis au conseil municipal&nbsp;: délibération de principe et groupe de travail.</li>
+        <li>Inventaire et visite des parcelles communales. Rencontre des agriculteurs du village.</li>
+        <li>Réunion publique et premières inscriptions d'habitants volontaires.</li>
+        <li>Création de l'association, convention avec la commune, demandes de subventions, recrutement du maraîcher.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="when">Printemps 2027 – 2028<b>Phase 1 · Le potager et le poulailler</b></span>
+      <ul>
+        <li>1 ha de légumes, une serre, l'irrigation, 100 poules.</li>
+        <li>Premiers paniers gratuits à l'été 2027.</li>
+        <li>Bilan public à la fin de la première saison.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="when">2028 – 2029<b>Phase 2 · Le pain, les porcs, les poulets</b></span>
+      <ul>
+        <li>Céréales avec une CUMA ou des agriculteurs partenaires, mouture à façon, four communal.</li>
+        <li>Premiers porcs et poulets en plein air.</li>
+        <li>Le potager passe à 6 ha&nbsp;: tout le village a ses légumes.</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="when">2029 – 2031<b>Phase 3 · L'étang et le troupeau</b></span>
+      <ul>
+        <li>Pisciculture en étang après les démarches au titre de la loi sur l'eau.</li>
+        <li>Troupeau de bovins conduit avec les éleveurs du village, abattage en abattoir agréé.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. Gouvernance ============ -->
+<section class="section flow" id="s12">
+  <div class="sec-head">
+    <span class="sec-num">12 · Gouvernance et participation</span>
+    <h2>Gouvernance et participation des habitants</h2>
+    <p class="sec-lead">Le projet appartient au village. Les décisions se prennent ensemble et les comptes sont publics.</p>
+  </div>
+  <table>
+    <thead><tr><th style="width:26%">Instance</th><th style="width:40%">Qui</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td class="what">Comité de pilotage</td><td>2 élus, le porteur du projet, 2 agriculteurs, 3 habitants, les salariés</td><td>Se réunit chaque mois. Suit le travail, le budget et le planning.</td></tr>
+      <tr><td class="what">Assemblée des habitants</td><td>Tous les habitants</td><td>Deux fois par an. Choisit les cultures, fixe les règles de partage, entend le bilan.</td></tr>
+      <tr><td class="what">Conseil municipal</td><td>Les élus</td><td>Vote la convention, la participation de la commune et le passage d'une phase à l'autre.</td></tr>
+    </tbody>
+  </table>
+  <h3>Faire vivre la participation</h3>
+  <ul class="clean">
+    <li>Un planning simple, au local et en ligne, avec des créneaux courts.</li>
+    <li>Des moments conviviaux&nbsp;: fête des récoltes, fournées collectives, repas partagés.</li>
+    <li>Un potager pédagogique avec l'école ou les familles.</li>
+    <li>Une place pour les anciens, qui transmettent leurs savoir-faire.</li>
+    <li>Un bilan annuel public&nbsp;: ce qui a été produit et distribué, ce que ça a coûté, combien d'heures ont été données.</li>
+  </ul>
+</section>
+
+<!-- ============ 13. Risques ============ -->
+<section class="section" id="s13">
+  <div class="sec-head">
+    <span class="sec-num">13 · Risques et réponses</span>
+    <h2>Risques et réponses</h2>
+  </div>
+  <table>
+    <thead><tr><th style="width:30%">Risque</th><th>Notre réponse</th></tr></thead>
+    <tbody>
+      <tr><td class="what">Mauvaise récolte (grêle, sécheresse)</td><td>Diversité des cultures, serre, irrigation, réserves de conserves. Possibilité d'assurance récolte.</td></tr>
+      <tr><td class="what">Manque de bénévoles ou essoufflement</td><td>Démarrer petit, salariés au cœur du dispositif, créneaux courts, convivialité, reconnaissance du temps donné.</td></tr>
+      <tr><td class="what">Inquiétude des agriculteurs du village</td><td>Les associer dès le départ&nbsp;: location de terres, prestations rémunérées, achats. Viser d'abord ce que le village achète aujourd'hui ailleurs.</td></tr>
+      <tr><td class="what">Réglementation sanitaire</td><td>Contact avec la DDPP dès la phase 0. Abattage et découpe en établissements agréés.</td></tr>
+      <tr><td class="what">Maladies animales</td><td>Biosécurité, effectifs raisonnables, suivi vétérinaire.</td></tr>
+      <tr><td class="what">Coût pour la commune</td><td>Phases successives, subventions, bilan public avant chaque nouvelle étape. Aucune phase n'est engagée sans financement.</td></tr>
+      <tr><td class="what">Vols et dégradations</td><td>Clôtures, présence régulière, appropriation du lieu par les habitants.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 14. Exemples ============ -->
+<section class="section flow" id="s14">
+  <div class="sec-head">
+    <span class="sec-num">14 · Ils l'ont déjà fait</span>
+    <h2>Ils l'ont déjà fait</h2>
+    <p class="sec-lead">D'autres collectivités françaises produisent ou financent déjà la nourriture de leurs habitants.</p>
+  </div>
+  <div class="cards3">
+    <div class="card">
+      <span class="where">Alpes-Maritimes</span>
+      <h4>Mouans-Sartoux</h4>
+      <p>Depuis 2011, la commune a sa propre ferme municipale. Son maraîcher, employé communal, fournit l'essentiel des légumes bio des cantines scolaires.</p>
+    </div>
+    <div class="card">
+      <span class="where">Haut-Rhin</span>
+      <h4>Ungersheim</h4>
+      <p>Ce village alsacien d'environ 2&nbsp;000 habitants cultive des légumes bio sur des terres communales, pour la cantine et pour des paniers destinés aux habitants.</p>
+    </div>
+    <div class="card">
+      <span class="where">Hérault</span>
+      <h4>Montpellier</h4>
+      <p>Depuis 2023, une caisse alimentaire commune&nbsp;: chaque participant cotise selon ses moyens et reçoit 100&nbsp;€ par mois pour se nourrir dans des commerces partenaires.</p>
+    </div>
+  </div>
+  <p class="note">Ces exemples sont à approfondir&nbsp;: une visite ou un échange avec ces communes ferait gagner beaucoup de temps.</p>
+</section>
+
+<!-- ============ 15. Demandes ============ -->
+<section class="section" id="s15">
+  <div class="sec-head">
+    <span class="sec-num">15 · Ce que nous demandons au maire</span>
+    <h2>Ce que nous demandons au maire</h2>
+    <p class="sec-lead">Six décisions simples pour lancer la phase 0 dans les trois prochains mois. Aucune n'engage encore de dépense importante.</p>
+  </div>
+  <ol class="asks">
+    <li><span class="n">1</span><div><strong>Recevoir le porteur du projet</strong><p>Pour une présentation détaillée et un premier échange sur ce dossier.</p></div></li>
+    <li><span class="n">2</span><div><strong>Communiquer la liste des parcelles communales</strong><p>Et les visiter ensemble, avec la fiche de l'annexe B.</p></div></li>
+    <li><span class="n">3</span><div><strong>Inscrire le projet à l'ordre du jour du conseil municipal</strong><p>Pour une délibération de principe et la création d'un groupe de travail.</p></div></li>
+    <li><span class="n">4</span><div><strong>Organiser une réunion publique</strong><p>Pour présenter le projet aux habitants et recueillir les premières inscriptions.</p></div></li>
+    <li><span class="n">5</span><div><strong>Solliciter un accompagnement</strong><p>Chambre d'agriculture du Puy-de-Dôme, communauté de communes (projet alimentaire territorial), DDPP pour le volet sanitaire.</p></div></li>
+    <li><span class="n">6</span><div><strong>Identifier un local communal</strong><p>Pour la distribution des paniers, le stockage et, plus tard, le fournil.</p></div></li>
+  </ol>
+  <p class="closing">Saint-Jean-d'Heurs a des terres, des habitants et des savoir-faire. Avec le soutien de la commune, nous pouvons faire de notre village un lieu où chacun mange bien, gratuitement, grâce au travail de tous.</p>
+  <div class="sign">
+    <div class="s"><div class="line"></div><span class="lbl">Le porteur du projet · nom et signature</span></div>
+    <div class="s"><div class="line"></div><span class="lbl">Date</span></div>
+  </div>
+</section>
+
+<!-- ============ Annexe A ============ -->
+<section class="section" id="aA">
+  <div class="sec-head">
+    <span class="sec-num">Annexe A · Calculs</span>
+    <h2>Hypothèses de calcul</h2>
+    <p class="sec-lead">Tous les chiffres du dossier découlent de ces hypothèses. Elles sont volontairement prudentes et seront affinées avec la Chambre d'agriculture.</p>
+  </div>
+  <table>
+    <thead><tr><th style="width:24%">Production</th><th style="width:30%">Consommation par personne et par an</th><th>Hypothèses de production</th></tr></thead>
+    <tbody>
+      <tr><td class="what">Légumes</td><td class="mono">100 kg</td><td>Rendement de 12 t/ha en maraîchage bio diversifié. Un hectare nourrit environ 120 personnes. 703 habitants → 70 t → 6 ha.</td></tr>
+      <tr><td class="what">Œufs</td><td class="mono">200 œufs</td><td>250 œufs par poule et par an → 560 poules. 45 kg d'aliment par poule et par an.</td></tr>
+      <tr><td class="what">Pain</td><td class="mono">45 kg</td><td>31,6 t de pain → environ 23 t de farine → 30 t de blé. Rendement bio de 3,5 t/ha → 9 ha.</td></tr>
+      <tr><td class="what">Volailles de chair</td><td class="mono">10 kg</td><td>1,8 kg de carcasse par poulet → 3&nbsp;900 poulets. 8 kg d'aliment par poulet.</td></tr>
+      <tr><td class="what">Porc</td><td class="mono">12 kg</td><td>90 kg de carcasse par porc → 95 porcs. 300 kg d'aliment par porc.</td></tr>
+      <tr><td class="what">Bœuf</td><td class="mono">10 kg</td><td>350 kg de carcasse par bête → 20 bêtes par an. Troupeau d'environ 25 vaches et leur suite, 1,2 ha par animal adulte → 55 ha.</td></tr>
+      <tr><td class="what">Poisson</td><td class="mono">2 kg</td><td>Étang extensif produisant environ 350 kg/ha/an → 4 ha.</td></tr>
+      <tr><td class="what">Aliments des animaux</td><td class="mono">—</td><td>Environ 84 t de céréales par an (poules, poulets, porcs). Rendement de 4 t/ha → 21 ha.</td></tr>
+    </tbody>
+  </table>
+  <h3>Autres hypothèses</h3>
+  <ul class="clean">
+    <li>Un temps plein = 151,67 heures par mois. Un temps plein cultive environ 1 ha de potager diversifié.</li>
+    <li>Environ 300 foyers (2,3 personnes par foyer) et 550 adultes.</li>
+    <li>Prix de détail utilisés pour la valeur produite&nbsp;: 2,60 à 3,00&nbsp;€ le kilo de légumes, 0,35&nbsp;€ l'œuf.</li>
+    <li>Le temps des habitants est valorisé à 15&nbsp;€ de l'heure, charges comprises.</li>
+    <li>La consommation de viande retenue est un peu inférieure à la moyenne française. Le lait, les fruits, l'huile et le sucre ne sont pas comptés.</li>
+  </ul>
+</section>
+
+<!-- ============ Annexe B ============ -->
+<section class="section" id="aB">
+  <div class="sec-head">
+    <span class="sec-num">Annexe B · Inventaire</span>
+    <h2>Fiche d'inventaire des parcelles communales</h2>
+    <p class="sec-lead">À remplir avec la mairie à partir de la matrice cadastrale, puis lors de la visite des parcelles.</p>
+  </div>
+  <table class="fill-table">
+    <thead><tr><th style="width:11%">Section</th><th style="width:11%">N°</th><th style="width:13%">Lieu-dit</th><th style="width:11%" class="num">Surface</th><th style="width:16%">Nature</th><th style="width:13%">Eau</th><th style="width:12%">Bail en cours</th><th>Usage possible</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Nature&nbsp;: prairie, terre labourable, bois, friche, étang. Eau&nbsp;: source, ruisseau, réseau, forage, aucune. Usage possible&nbsp;: potager, poulailler, céréales, pâture, étang, local.</p>
+  <h3>Bâtiments communaux disponibles</h3>
+  <table class="fill-table">
+    <thead><tr><th style="width:30%">Bâtiment</th><th style="width:15%" class="num">Surface</th><th style="width:20%">État</th><th>Usage possible (distribution, stockage, fournil)</th></tr></thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ Annexe C ============ -->
+<section class="section flow" id="aC">
+  <div class="sec-head">
+    <span class="sec-num">Annexe C · Sigles</span>
+    <h2>Sigles utilisés</h2>
+  </div>
+  <dl class="glossary">
+    <dt>CCAS</dt><dd>Centre communal d'action sociale</dd>
+    <dt>CUMA</dt><dd>Coopérative d'utilisation de matériel agricole</dd>
+    <dt>DDPP</dt><dd>Direction départementale de la protection des populations (hygiène, sécurité des aliments, santé animale)</dd>
+    <dt>DDT</dt><dd>Direction départementale des territoires (urbanisme, police de l'eau)</dd>
+    <dt>DETR</dt><dd>Dotation d'équipement des territoires ruraux (aide de l'État aux investissements des communes)</dd>
+    <dt>DSIL</dt><dd>Dotation de soutien à l'investissement local</dd>
+    <dt>EDE</dt><dd>Établissement départemental de l'élevage (identification des animaux)</dd>
+    <dt>EGalim</dt><dd>Loi qui fixe des objectifs de qualité pour la restauration collective</dd>
+    <dt>LEADER</dt><dd>Programme européen de développement des territoires ruraux</dd>
+    <dt>PAT</dt><dd>Projet alimentaire territorial</dd>
+    <dt>PLU</dt><dd>Plan local d'urbanisme</dd>
+    <dt>SAFER</dt><dd>Société d'aménagement foncier et d'établissement rural</dd>
+    <dt>SCIC</dt><dd>Société coopérative d'intérêt collectif</dd>
+  </dl>
+</section>
+
+<script>
+(function () {
+  /* Grille des hectares : 53 × 21 = 1 113 carrés, remplis colonne par colonne */
+  var COLS = 53, ROWS = 21, CELL = 10, GAP = 2, TOP = 30;
+  var CATS = [["prairie", 59], ["cereale", 30], ["legume", 6], ["etang", 4]];
+  var NS = "http://www.w3.org/2000/svg", svg = document.getElementById("ha-grid");
+  var seq = [];
+  CATS.forEach(function (c) { for (var i = 0; i < c[1]; i++) seq.push(c[0]); });
+  for (var col = 0; col < COLS; col++) for (var row = 0; row < ROWS; row++) {
+    var r = document.createElementNS(NS, "rect");
+    r.setAttribute("x", col * (CELL + GAP)); r.setAttribute("y", TOP + row * (CELL + GAP));
+    r.setAttribute("width", CELL); r.setAttribute("height", CELL); r.setAttribute("rx", 2);
+    r.setAttribute("class", "c-" + (seq[col * ROWS + row] || "reste"));
+    svg.appendChild(r);
+  }
+  var x2 = Math.ceil(seq.length / ROWS) * (CELL + GAP) - GAP;
+  var br = document.createElementNS(NS, "path");
+  br.setAttribute("class", "ha-bracket");
+  br.setAttribute("d", "M0 " + (TOP - 6) + " V" + (TOP - 12) + " H" + x2 + " V" + (TOP - 6));
+  svg.appendChild(br);
+  var tx = document.createElementNS(NS, "text");
+  tx.setAttribute("class", "ha-note"); tx.setAttribute("x", x2 + 10); tx.setAttribute("y", TOP - 8);
+  tx.textContent = "≈ 100 ha pour nourrir le village";
+  svg.appendChild(tx);
+
+  /* Barres du travail (temps pleins) */
+  var ROWS_T = [
+    ["Maraîchage (6 ha)", 6.0, false],
+    ["Fournil et pain", 1.5, false],
+    ["Distribution, logistique, coordination", 1.3, false],
+    ["Poulets (3 900 par an)", 1.0, false],
+    ["Bovins (avec un éleveur)", 0.7, false],
+    ["Poules pondeuses (560)", 0.5, false],
+    ["Porcs (95 par an)", 0.5, false],
+    ["Céréales (avec une CUMA)", 0.3, false],
+    ["Étangs", 0.2, false]
+  ];
+  var max = 6, wrap = document.getElementById("bars");
+  var fmt = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var total = 0;
+  ROWS_T.forEach(function (t) {
+    total += t[1];
+    var d = document.createElement("div"); d.className = "bar";
+    d.innerHTML = '<span class="lbl"></span><span class="track"><span class="fill' + (t[2] ? " sal" : "") +
+      '" style="width:' + (t[1] / max * 100) + '%"></span></span><span class="v">' + fmt.format(t[1]) + "</span>";
+    d.querySelector(".lbl").textContent = t[0];
+    wrap.appendChild(d);
+  });
+  var tot = document.createElement("div"); tot.className = "bar";
+  tot.innerHTML = '<span class="lbl"><strong>Total</strong></span><span></span><span class="v"><strong>' + fmt.format(total) + "</strong></span>";
+  wrap.appendChild(tot);
+})();
+</script>
+</body>
+</html>
