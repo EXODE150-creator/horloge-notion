@@ -1,0 +1,52 @@
+/* Identité partagée avec le site : vert prairie, jaune blé, ardoise de marché.
+   Titres en Alfa Slab One, texte en Lexend, chiffres en IBM Plex Mono. */
+:root {
+  --paper: #ffffff;
+  --tint: #eef3ea;
+  --ink: #17241b;
+  --ink-2: #3b4a3f;
+  --muted: #5a695d;
+  --line: #d3dbcd;
+  --brand: #1d5a34;
+  --accent: #8a5a00;
+  --hero-bg: #173f27;
+  --hero-ink: #f4f1e2;
+  --hero-ink-2: #c6d5c0;
+  --wheat: #efbd33;
+  --wheat-ink: #1f1a08;
+  --slate: #262c2f;
+  --chalk: #f2efe4;
+  --chalk-2: #b9bdb6;
+  --wood: #8b5a2b;
+  --wood-2: #6b4220;
+  --puys: #2a5639;
+  --hill: #34693f;
+  --hill-2: #44804c;
+  --field-wheat: #d6a52a;
+  --field-green: #5b9a55;
+  --soil: #5d4127;
+  --pond: #3d7db6;
+  --sun: #f3c84a;
+  --c-prairie: #22744a;
+  --c-cereale: #c98f00;
+  --c-legume: #a3449c;
+  --c-etang: #2f6db5;
+  --c-reste: #e3e8de;
+  --f-display: "Alfa Slab One", "Rockwell", "Roboto Slab", Georgia, serif;
+  --f-body: "Lexend", "Segoe UI", Roboto, Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 9.6pt;
+  line-height: 1.55;
+  font-weight: 400;
+}
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+strong, b { font-weight: 600; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
